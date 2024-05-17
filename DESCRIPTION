@@ -1,15 +1,30 @@
 Package: goseq
+Title: Gene Ontology analyser for RNA-seq and other length biased data
 Version: 1.57.0
 Date: 2019/04/26
-Title: Gene Ontology analyser for RNA-seq and other length biased data
 Author: Matthew Young
 Maintainer: Matthew Young <my4@sanger.ac.uk>, Nadia Davidson <nadia.davidson@mcri.edu.au>
-Depends: R (>= 2.11.0), BiasedUrn, geneLenDataBase (>= 1.9.2)
-Imports: mgcv, graphics, stats, utils, AnnotationDbi, GO.db,BiocGenerics, methods,
-    rtracklayer, GenomicFeatures, GenomeInfoDb
-Suggests: edgeR, org.Hs.eg.db
 Description: Detects Gene Ontology and/or other user defined categories
     which are over/under represented in RNA-seq data.
+Depends: 
+    R (>= 2.11.0), 
+    BiasedUrn, 
+    geneLenDataBase (>= 1.9.2)
+Imports: 
+    mgcv, 
+    graphics, 
+    stats, 
+    utils, 
+    AnnotationDbi, 
+    GO.db,
+    BiocGenerics, 
+    methods,
+    rtracklayer, 
+    GenomicFeatures, 
+    GenomeInfoDb
+Suggests: 
+    edgeR, 
+    org.Hs.eg.db
 License: LGPL (>= 2)
-Packaged: 2015-02-17 04:07:28 UTC; nadia
-biocViews: ImmunoOncology, Sequencing, GO, GeneExpression, Transcription, RNASeq
+biocViews: 
+    ImmunoOncology, Sequencing, GO, GeneExpression, Transcription, RNASeq
