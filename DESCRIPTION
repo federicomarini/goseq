@@ -8,7 +8,6 @@ Depends: R (>= 2.11.0), BiasedUrn, geneLenDataBase (>= 1.9.2)
 Imports: mgcv, graphics, stats, utils, AnnotationDbi, GO.db,BiocGenerics, methods,
     rtracklayer, GenomicFeatures, GenomeInfoDb
 Suggests: edgeR, org.Hs.eg.db
-LazyLoad: yes
 Description: Detects Gene Ontology and/or other user defined categories
     which are over/under represented in RNA-seq data.
 License: LGPL (>= 2)
