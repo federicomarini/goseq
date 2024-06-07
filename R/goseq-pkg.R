@@ -13,7 +13,7 @@
 #' @importFrom GenomeInfoDb `genome<-`
 #' @importFrom methods show
 #' @importFrom rtracklayer browserSession ucscGenomes ucscTableQuery getTable
-#' @importFrom BiocGenerics relist
+#' @importFrom BiocGenerics relist toTable
 #' @importFrom BiasedUrn dWNCHypergeo pWNCHypergeo
 #' @import geneLenDataBase
 #'
