@@ -4,7 +4,7 @@
 #' @param count current iteration
 #' @param i index of the loop
 #'
-#' @return
+#' @return message indicating the progress
 pp <- function(total, count, i = i) {
   if (missing(count)) {
     count <- evalq(i, envir = parent.frame())
