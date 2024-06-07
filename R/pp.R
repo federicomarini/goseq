@@ -11,5 +11,5 @@ pp <- function(total, count, i = i) {
   if (missing(total)) {
     total <- evalq(stop, envir = parent.frame())
   }
-  cat(round(100 * (count / total)), "%   \r")
+  message(round(100 * (count / total)), "%   \r")
 }
