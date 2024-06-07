@@ -1,11 +1,3 @@
-#############################################################################
-# Description: Fits a spline to the data (x,y) using penalized constrained least squares
-# Notes:
-# Author: Matthew Young
-# Date Modified: 7/4/2015
-
-
-
 #' Monotonic Spline
 #' 
 #' Fits a monotonic cubic spline to the data provided, using the penalized

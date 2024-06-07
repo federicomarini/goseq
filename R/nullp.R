@@ -1,13 +1,3 @@
-#############################################################################
-# Description: Generates the weighting curve that is used to generate the length corrected NULL distribution.
-# A spline is fit to obtain a functional relationship between gene length and likelihood of differential exrpession
-# Notes: By default genome and id are used to fetch length data from GeneLenDataBase, but the length of each gene can be supplied with bias.data
-# Author: Matthew Young
-# Date Modified: 20/12/2010
-
-
-
-
 #' Probability Weighting Function
 #' 
 #' Calculates a Probability Weighting Function for a set of genes based on a

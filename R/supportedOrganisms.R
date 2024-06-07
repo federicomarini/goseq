@@ -1,11 +1,3 @@
-#############################################################################
-# Description: Lists which genomes and gene IDs are supported by goseq (length and GO terms)
-# Notes:
-# Author: Nadia Davidson
-# Date Modified: 2016/10/04
-
-
-
 #' Supported Organisms
 #' 
 #' Lists which genomes and gene ids are supported for gene lengths and for gene

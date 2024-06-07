@@ -1,12 +1,3 @@
-#############################################################################
-# Description: Plot the probability weighting function
-# Notes: "auto" binsize tries to determine the best binsize to display the relationship b/w bias.data and %DE
-# The "pwf" input can be either a list with the data.frame as an entry, or just the data.frame
-# Author: Matthew Young
-# Date Modified: 13/12/2010
-
-
-
 #' Plot the Probability Weighting Function
 #' 
 #' Plots the Probability Weighting Function created by \code{\link{nullp}} by

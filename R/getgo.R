@@ -1,11 +1,3 @@
-#############################################################################
-# Description: Attempts to fetch the categories specified for the given genes, genome and gene ID format
-# Notes: Relies on the bioconductor organism packages being installed for whatever genome you specify
-# Author: Matthew Young
-# Date Modified: 17/2/2015
-
-
-
 #' Fetch GO categories
 #' 
 #' Obtains all gene ontology (GO) categories associated with a set of genes

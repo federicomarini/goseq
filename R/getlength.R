@@ -1,11 +1,3 @@
-#############################################################################
-# Description: Fetches gene length data for the genome and id specified.
-# Notes:
-# Author: Matthew Young, Nadia Davidson
-# Date Modified: 7/4/2015
-
-
-
 #' Retrieves Gene length data
 #' 
 #' Gets the length of each gene in a vector.
