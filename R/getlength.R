@@ -35,7 +35,7 @@ getlength=function(genes,genome,id){
 	   #if not look for the package with generic gene IDs and convert later
 	   if(length(txdbPack)==0){ 
 	      orgstring=as.character(.ORG_PACKAGES[match(gsub("[0-9]+",'',genome),names(.ORG_PACKAGES))])
-	      packageExtension=tail(strsplit(orgstring,".",fixed=T)[[1]],n=1)
+	      packageExtension=tail(strsplit(orgstring,".",fixed=TRUE)[[1]],n=1)
 	      genericID=names(.ID_MAP[which(.ID_MAP==packageExtension)])
 	      txdbPattern=paste("TxDb","*",genome,genericID,sep=".")  
 	      txdbPack=installedPackages[grep(txdbPattern,installedPackages)]
