@@ -41,7 +41,7 @@ Once installed, the \texttt{goseq} package can be easily loaded into R using:
 library(goseq)
 @
 <<set_width,echo=FALSE>>=
-options(width=84)
+options(width = 84)
 @
 \np
 In order to perform a GO analysis of your RNA-seq data, \texttt{goseq} only requires a simple named vector, which contains two pieces of information.
@@ -60,8 +60,8 @@ Bioconductor R packages such as \texttt{Rsubread} allow for the summarization of
 We assume that the user can use appropriate in-built \texttt{R} functions (such as \texttt{read.table} or \texttt{scan}) to obtain two vectors, one containing all genes assayed in the RNA-seq experiment, the other containing all genes which are DE.  If we assume that the vector of genes being assayed is named \texttt{assayed.genes} and the vector of DE genes is named \texttt{de.genes} we can construct a named vector suitable for use with \texttt{goseq} using the following:
 
 <<read.data,eval=FALSE>>=
-gene.vector=as.integer(assayed.genes%in%de.genes)
-names(gene.vector)=assayed.genes
+gene.vector <- as.integer(assayed.genes %in% de.genes)
+names(gene.vector) <- assayed.genes
 head(gene.vector)
 @
 
@@ -111,8 +111,8 @@ Alternatively, mappings between genes and categories can be given as a list.  Th
 Any organism for which there is an annotation on either Ensembl or the UCSC, can be easily turned into length data using the GenomicFeatures package.  To do this, first create a TranscriptDb object using either makeTxDbFromBiomart or makeTxDbFromUCSC (see the help in the GenomicFeatures package on using these commands).  Once you have a transcriptDb object, you can get a vector named by gene ID containing the median transcript length of each gene simply by using the command.
 
 <<getLengthDataFromUCSC,eval=FALSE>>=
-txsByGene=transcriptsBy(txdb,"gene")
-lengthData=median(width(txsByGene))
+txsByGene <- transcriptsBy(txdb, "gene")
+lengthData <- median(width(txsByGene))
 @
 
 The relationship between gene identifier and GO category can usually be obtained from the Gene Ontology website (www.geneontology.org) or from the NCBI.  Additionally, the bioconductor AnnotationDbi library has recently added a function "makeOrgPackageFromNCBI", which can be used to create an organism package from within R, using the NCBI data.  Once created, this package can then be used to obtain the mapping between genes and gene ontology.
@@ -138,29 +138,31 @@ To begin with, we load in the text data and convert it the appropriate \texttt{e
 
 <<edger_1>>=
 library(edgeR)
-table.summary=read.table(system.file("extdata","Li_sum.txt",package='goseq'),
-	                 sep='\t',header=TRUE,stringsAsFactors=FALSE)
-counts=table.summary[,-1]
-rownames(counts)=table.summary[,1]
-grp=factor(rep(c("Control","Treated"),times=c(4,3)))
-summarized=DGEList(counts,lib.size=colSums(counts),group=grp)
+table.summary <- read.table(system.file("extdata", "Li_sum.txt", package = "goseq"),
+  sep = "\t", header = TRUE, stringsAsFactors = FALSE
+)
+counts <- table.summary[, -1]
+rownames(counts) <- table.summary[, 1]
+grp <- factor(rep(c("Control", "Treated"), times = c(4, 3)))
+summarized <- DGEList(counts, lib.size = colSums(counts), group = grp)
 @
 
 Next, we use \texttt{edgeR} to estimate the biological dispersion and calculate differential expression using a negative binomial model.
 
 <<edger_2>>=
-disp=estimateCommonDisp(summarized)
+disp <- estimateCommonDisp(summarized)
 disp$common.dispersion
-tested=exactTest(disp)
+tested <- exactTest(disp)
 topTags(tested)
 @
 
 Finally, we Format the DE genes into a vector suitable for use with \texttt{goseq}
 
 <<edger_3>>=
-genes=as.integer(p.adjust(tested$table$PValue[tested$table$logFC!=0],
-		method="BH")<.05)
-names(genes)=row.names(tested$table[tested$table$logFC!=0,])
+genes <- as.integer(p.adjust(tested$table$PValue[tested$table$logFC != 0],
+  method = "BH"
+) < .05)
+names(genes) <- row.names(tested$table[tested$table$logFC != 0, ])
 table(genes)
 @
 
@@ -175,7 +177,7 @@ head(supportedOrganisms())
 Which lists the genome codes in the far left column, headed ``Genome''.  As we are using ``hg19" and  we also know that we used ENSEMBL Gene ID to summarize our read data, we check what code this corresponds to by running:
 
 <<head_geneids>>=
-supportedOrganisms()[supportedOrganisms()$Genome=="hg19",]
+supportedOrganisms()[supportedOrganisms()$Genome == "hg19", ]
 @
 
 The gene ID codes are listed in the column second from left, titled ``Id''.  We find that our gene ID code is ``ensGene".  We will use these strings whenever we are asked for a genome or id. If the gene ID is missing for your Genome (for example this is the case for hg38), then the genome is not supported in the geneLengthDatabase. Gene lengths will either be automatically fetched from TxDB, UCSC or you will need to provide them manually. Supported Gene IDs to automatically fetch GO terms should usually either be Entrez (``knownGene"), Ensembl (``ensGene") or gene symbols (``geneSymbol").
@@ -187,7 +189,7 @@ The gene ID codes are listed in the column second from left, titled ``Id''.  We 
 We first need to obtain a weighting for each gene, depending on its length, given by the PWF.  As you may have noticed when running supportedGenomes or supportedGeneIDs, length data is available in the local database for our gene ID, ``ensGene" and our genome, ``hg19".  We will let \texttt{goseq} automatically fetch this data from its databases.
 
 <<pwf,fig=TRUE>>=
-pwf=nullp(genes,"hg19","ensGene")
+pwf <- nullp(genes, "hg19", "ensGene")
 head(pwf)
 @
 
@@ -203,7 +205,7 @@ To start with we will use the default method, to calculate the over and under ex
 %This hides the output of goseq
 
 <<GO.wall>>=
-GO.wall=goseq(pwf,"hg19","ensGene")
+GO.wall <- goseq(pwf, "hg19", "ensGene")
 head(GO.wall)
 @
 
@@ -214,7 +216,7 @@ The resulting object is ordered by GO category over representation amongst DE ge
 It may sometimes be desirable to use random sampling to generate the null distribution for category membership. For example, to check consistency against results from the Wallenius approximation. This is easily accomplished by using the \texttt{method} option to specify sampling and the \texttt{repcnt} option to specify the number of samples to generate:
 
 <<GO.samp,results=hide>>=
-GO.samp=goseq(pwf,"hg19","ensGene",method="Sampling",repcnt=1000)
+GO.samp <- goseq(pwf, "hg19", "ensGene", method = "Sampling", repcnt = 1000)
 @
 <<head_samp>>=
 head(GO.samp)
@@ -223,10 +225,11 @@ head(GO.samp)
 You will notice that this takes far longer than the Wallenius approximation.  Plotting the p-values against one another, we see that there is little difference between the two methods. However, the accuracy of the sampling method is limited by the number of samples generated, \texttt{repcnt}, such that very low p-values will not be correctly calculated. Significantly enriched GO terms may then be missed after correcting for multiple testing.
 
 <<plot_wal_v_samp,fig=TRUE>>=
-plot(log10(GO.wall[,2]), log10(GO.samp[match(GO.wall[,1],GO.samp[,1]),2]), 
-     xlab="log10(Wallenius p-values)",ylab="log10(Sampling p-values)", 
-     xlim=c(-3,0))
-abline(0,1,col=3,lty=2)
+plot(log10(GO.wall[, 2]), log10(GO.samp[match(GO.wall[, 1], GO.samp[, 1]), 2]),
+  xlab = "log10(Wallenius p-values)", ylab = "log10(Sampling p-values)",
+  xlim = c(-3, 0)
+)
+abline(0, 1, col = 3, lty = 2)
 @
 
 \subsubsection{Ignoring length bias}
@@ -236,17 +239,18 @@ abline(0,1,col=3,lty=2)
 However, if you still wish to ignore length bias in calculating GO category enrichment, this is again accomplished using the \texttt{method} option.
 
 <<GO.nobias>>=
-GO.nobias=goseq(pwf,"hg19","ensGene",method="Hypergeometric")
+GO.nobias <- goseq(pwf, "hg19", "ensGene", method = "Hypergeometric")
 head(GO.nobias)
 @
 
 Ignoring length bias gives very different results from a length bias corrected analysis.
 
 <<plot_wal_v_hyper,fig=TRUE>>=
-plot(log10(GO.wall[,2]), log10(GO.nobias[match(GO.wall[,1],GO.nobias[,1]),2]), 
-     xlab="log10(Wallenius p-values)", ylab="log10(Hypergeometric p-values)", 
-     xlim=c(-3,0), ylim=c(-3,0))
-abline(0,1,col=3,lty=2)
+plot(log10(GO.wall[, 2]), log10(GO.nobias[match(GO.wall[, 1], GO.nobias[, 1]), 2]),
+  xlab = "log10(Wallenius p-values)", ylab = "log10(Hypergeometric p-values)",
+  xlim = c(-3, 0), ylim = c(-3, 0)
+)
+abline(0, 1, col = 3, lty = 2)
 @
 
 \subsubsection{Limiting GO categories and other category based tests}
@@ -254,7 +258,7 @@ abline(0,1,col=3,lty=2)
 By default, \texttt{goseq} tests all three major Gene Ontology branches; Cellular Components, Biological Processes and Molecular Functions.  However, it is possible to limit testing to any combination of the major branches by using the \texttt{test.cats} argument to the goseq function.  This is done by specifying a vector consisting of some combination of the strings ``GO:CC", ``GO:BP" and ``GO:MF".  For example, to test for only Molecular Function GO categories:
 
 <<GO.limited>>=
-GO.MF=goseq(pwf,"hg19","ensGene",test.cats=c("GO:MF"))
+GO.MF <- goseq(pwf, "hg19", "ensGene", test.cats = c("GO:MF"))
 head(GO.MF)
 @
 
@@ -265,8 +269,9 @@ Native support for other category tests, such as KEGG pathway analysis are also 
 Having performed the GO analysis, you may now wish to interpret the results.  If you wish to identify categories significantly enriched/unenriched below some p-value cutoff, it is necessary to first apply some kind of multiple hypothesis testing correction.  For example, GO categories over enriched using a .05 FDR cutoff \citep{Benjamini95} are:
 
 <<enriched_GO>>=
-enriched.GO=GO.wall$category[p.adjust(GO.wall$over_represented_pvalue,
-            method="BH")<.05]
+enriched.GO <- GO.wall$category[p.adjust(GO.wall$over_represented_pvalue,
+  method = "BH"
+) < .05]
 head(enriched.GO)
 @
 
@@ -274,9 +279,9 @@ Unless you are a machine, GO accession identifiers are probably not very meaning
 
 <<GO_explained>>=
 library(GO.db)
-for(go in enriched.GO[1:10]){
-	print(GOTERM[[go]])
-	cat("--------------------------------------\n")
+for (go in enriched.GO[1:10]) {
+  print(GOTERM[[go]])
+  cat("--------------------------------------\n")
 }
 @
 
@@ -286,7 +291,7 @@ The situation may arise where it is necessary for the user to perform some of th
 \np
 To start with, when \texttt{nullp} is called, \texttt{goseq} uses the genome and gene identifiers supplied to try and retrieve length information for all genes given to the \texttt{genes} argument.  To do this, it retrieves the data from the database of gene lengths maintained in the package \texttt{geneLenDataBase}.  This is performed by the \texttt{getlength} function in the following way:
 <<getlength>>=
-len=getlength(names(genes),"hg19","ensGene")
+len <- getlength(names(genes), "hg19", "ensGene")
 length(len)
 length(genes)
 head(len)
@@ -295,7 +300,7 @@ After some data cleanup, the length data and the DE data is then passed to the \
 \np
 Next we call the \texttt{goseq} function to determine over/under representation of GO categories amongst DE genes.  When we do this, \texttt{goseq} looks for the appropriate organism package and tries to obtain the mapping from genes to GO categories from it.  This is done using the \texttt{getgo} function as follows:
 <<getgo>>=
-go=getgo(names(genes),"hg19","ensGene")
+go <- getgo(names(genes), "hg19", "ensGene")
 length(go)
 length(genes)
 head(go)
@@ -317,15 +322,15 @@ goseq:::.ORG_PACKAGES
 It is just as valid to run the length and GO category fetching as separate steps and then pass the result to the \texttt{nullp} and \texttt{goseq} functions using the \texttt{bias.data} and \texttt{gene2cat} arguments.  Thus the following two blocks of code are equivalent:
 
 <<norm_analysis,eval=FALSE>>=
-pwf=nullp(genes,"hg19","ensGene")
-go=goseq(pwf,"hg19","ensGene")
+pwf <- nullp(genes, "hg19", "ensGene")
+go <- goseq(pwf, "hg19", "ensGene")
 @
 and
 <<verbose_analysis,eval=FALSE>>=
-gene_lengths=getlength(names(genes),"hg19","ensGene")
-pwf=nullp(genes,bias.data=gene_lengths)
-go_map=getgo(names(genes),"hg19","ensGene")
-go=goseq(pwf,"hg19","ensGene",gene2cat=go_map)
+gene_lengths <- getlength(names(genes), "hg19", "ensGene")
+pwf <- nullp(genes, bias.data = gene_lengths)
+go_map <- getgo(names(genes), "hg19", "ensGene")
+go <- goseq(pwf, "hg19", "ensGene", gene2cat = go_map)
 @
 
 \subsection{KEGG pathway analysis}
@@ -334,15 +339,17 @@ In order to illustrate performing a category test not present in the \texttt{gos
 
 <<KEGG_mappings,eval=FALSE>>=
 # Get the mapping from ENSEMBL 2 Entrez
-en2eg=as.list(org.Hs.egENSEMBL2EG)
+en2eg <- as.list(org.Hs.egENSEMBL2EG)
 # Get the mapping from Entrez 2 KEGG
-eg2kegg=as.list(org.Hs.egPATH)
-# Define a function which gets all unique KEGG IDs 
+eg2kegg <- as.list(org.Hs.egPATH)
+# Define a function which gets all unique KEGG IDs
 # associated with a set of Entrez IDs
-grepKEGG=function(id,mapkeys){unique(unlist(mapkeys[id],use.names=FALSE))}
-# Apply this function to every entry in the mapping from 
+grepKEGG <- function(id, mapkeys) {
+  unique(unlist(mapkeys[id], use.names = FALSE))
+}
+# Apply this function to every entry in the mapping from
 # ENSEMBL 2 Entrez to combine the two maps
-kegg=lapply(en2eg,grepKEGG,eg2kegg)
+kegg <- lapply(en2eg, grepKEGG, eg2kegg)
 head(kegg)
 @
 
@@ -351,8 +358,8 @@ Note that this step is quite time consuming.  The code written here is not the m
 We produce the PWF as before.  Then, to perform a KEGG analysis, we simply make use of the \texttt{gene2cat} option in \texttt{goseq}:
 
 <<KEGG,eval=FALSE>>=
-pwf=nullp(genes,"hg19","ensGene")
-KEGG=goseq(pwf,gene2cat=kegg)
+pwf <- nullp(genes, "hg19", "ensGene")
+KEGG <- goseq(pwf, gene2cat = kegg)
 head(KEGG)
 @
 
@@ -361,8 +368,8 @@ Note that we do not have to tell the goseq function what organism and gene ID we
 KEGG analysis is shown as an illustration of how to supply your own mapping between gene ID and category, KEGG analysis is actually natively supported by GOseq and we could have performed it with the following code.
 
 <<KEGG_goseq>>=
-pwf=nullp(genes,'hg19','ensGene')
-KEGG=goseq(pwf,'hg19','ensGene',test.cats="KEGG")
+pwf <- nullp(genes, "hg19", "ensGene")
+KEGG <- goseq(pwf, "hg19", "ensGene", test.cats = "KEGG")
 head(KEGG)
 @
 
@@ -373,7 +380,7 @@ Noting that this time it was necessary to tell the goseq function that we are us
 If you know that the information mapping gene ID to your categories of interest is contained in the organism packages, but \texttt{goseq} fails to fetch it automatically, you may want to extract it yourself and then pass it to the \texttt{goseq} function using the \texttt{gene2cat} argument.  This is done in exactly the same way as extracting the KEGG to ENSEMBL mappings in the section ``KEGG pathway analysis" above.  This example is actually the worst case, where it is necessary to combine two mappings to get the desired list.  If we had instead wanted the association between Entrez gene IDs and KEGG pathways, the following code would have been sufficient:
 
 <<KEGG_from_db>>=
-kegg=as.list(org.Hs.egPATH)
+kegg <- as.list(org.Hs.egPATH)
 head(kegg)
 @
 
@@ -388,7 +395,7 @@ Correcting for count bias will produce a different PWF.  Therefore, we need to t
 So, in order to tell \texttt{goseq} to correct for read count bias instead of length bias, all you need to do is supply a numeric vector, containing the number of counts for each gene to \texttt{nullp}.
 
 <<countbias>>=
-countbias=rowSums(counts)[rowSums(counts)!=0]
+countbias <- rowSums(counts)[rowSums(counts) != 0]
 length(countbias)
 length(genes)
 @
@@ -396,8 +403,8 @@ length(genes)
 To use the count bias when doing GO analysis, simply pass this vector to \texttt{nullp} using the \texttt{bias.data} option.  Note that we have to supply "hg19" and "ensGene" to \texttt{goseq} as it is not used by nullp and hence not in the pwf.counts object.
 
 <<GO.counts>>=
-pwf.counts=nullp(genes,bias.data=countbias)
-GO.counts=goseq(pwf.counts,"hg19","ensGene")
+pwf.counts <- nullp(genes, bias.data = countbias)
+GO.counts <- goseq(pwf.counts, "hg19", "ensGene")
 head(GO.counts)
 @
 
