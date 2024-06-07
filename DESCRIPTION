@@ -27,4 +27,6 @@ Suggests:
     org.Hs.eg.db
 License: LGPL (>= 2)
 biocViews: 
-    ImmunoOncology, Sequencing, GO, GeneExpression, Transcription, RNASeq
+    ImmunoOncology, Sequencing, GO, GeneExpression, Transcription, RNASeq,
+    DifferentialExpression, Annotation, GeneSetEnrichment, KEGG, Pathways, 
+    Software
