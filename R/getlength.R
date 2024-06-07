@@ -4,6 +4,55 @@
 # Author: Matthew Young, Nadia Davidson
 # Date Modified: 7/4/2015
 
+
+
+#' Retrieves Gene length data
+#' 
+#' Gets the length of each gene in a vector.
+#' 
+#' Length data is obtained from data obtained from the UCSC genome browser for
+#' each combination of \code{genome} and \code{id}.  As fetching this data at
+#' runtime is time consuming, a local copy of the length information for common
+#' genomes and gene ID are included in the \pkg{geneLenDataBase} package.  This
+#' function uses this package to fetch the required data.
+#' 
+#' The length of a gene is taken to be the median length of all its mature,
+#' mRNA, transcripts.  It is always preferable to obtain length information
+#' directly for the gene ID used to summarize your count data, rather than
+#' converting IDs and then using the supplied databases.  Even when two genes
+#' have a one-to-one mapping between different identifier conventions (which is
+#' often not the case), they frequently refer to slightly different regions of
+#' the genome with different lengths.  It is therefore recommended that the
+#' user perform the full analysis in terms of only one gene ID, or manually
+#' obtain their own length data for the identifier used to bin reads by gene.
+#' 
+#' @param genes A vector or list of the genes for which length information is
+#' required.
+#' @param genome A string identifying the genome that \code{genes} refer to.
+#' For a list of supported organisms run \code{\link{supportedGenomes}}.
+#' @param id A string identifying the gene identifier used by \code{genes}.
+#' For a list of supported gene IDs run \code{\link{supportedGeneIDs}}.
+#' @return Returns a vector of the gene lengths, in the same order as
+#' \code{genes}.  If length data is unavailable for a particular gene NA is
+#' returned in that position.  The returned vector is intended for use with the
+#' \code{bias.data} option of the \code{\link{nullp}} function.
+#' 
+#' @author Matthew D. Young \email{myoung@@wehi.edu.au}
+#' 
+#' @seealso \code{\link{supportedGenomes}}, \code{\link{supportedGeneIDs}},
+#' \code{\link{nullp}}, \pkg{geneLenDataBase}
+#' 
+#' @export
+#' 
+#' @examples
+#' 
+#' genes <- c("ENSG00000124208", 
+#'            "ENSG00000182463", 
+#'            "ENSG00000124201", 
+#'            "ENSG00000124205", 
+#'            "ENSG00000124207")
+#' getlength(genes,'hg19','ensGene')
+#' 
 getlength <- function(genes, genome, id) {
   # geneLenDataBase contains all the gene length data, check it is installed
   if (!any(library()$results[, "Package"] == "geneLenDataBase")) {

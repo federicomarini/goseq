@@ -4,6 +4,39 @@
 # Author: Nadia Davidson
 # Date Modified: 2016/10/04
 
+
+
+#' Supported Organisms
+#' 
+#' Lists which genomes and gene ids are supported for gene lengths and for gene
+#' ontology
+#' 
+#' Goseq allows a user to provide their own bias data (usually gene lengths)
+#' and/or gene categories (usually gene ontologies), but goseq also provides
+#' this data automatically for many commonly used species. This function lists
+#' which genome and gene ids are automatically supported by goseq. The first to
+#' third columns list the genomes, gene ids, and gene id descriptions
+#' respectively. The fourth column indicates whether this combination of genome
+#' and id are available in the geneLengthDataBase. If a particular combination
+#' is absent, goseq may still automatically fetch the gene lengths from either
+#' a TxDB annotation package (must be installed) or download the data from
+#' UCSC. For example gene lengths for \code{hg38} are not supported in
+#' \code{geneLengthDataBase} but may be fetched by these other means. However,
+#' this is not always the case. The final column indicates if GO terms will be
+#' automatically fetched for the genome and id combination.  Goseq relies on an
+#' \code{org} annotation package (e.g. \code{org.Hs.eg.db}) existing for the
+#' organism. In general, if either the lengths or GO terms are not supported,
+#' the user must enter this information manually.
+#' 
+#' @return A data.frame containing supported genomes and gene ids
+#' 
+#' @author Nadia Davidson \email{nadia.davidson@@mcri.edu.au}
+#' 
+#' @export
+#' 
+#' @examples
+#' supportedOrganisms()
+#' 
 supportedOrganisms <- function() {
   requireNamespace("rtracklayer")
 
