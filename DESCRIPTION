@@ -45,3 +45,5 @@ biocViews:
     ImmunoOncology, Sequencing, GO, GeneExpression, Transcription, RNASeq,
     DifferentialExpression, Annotation, GeneSetEnrichment, KEGG, Pathways, 
     Software
+RoxygenNote: 7.3.1
+Encoding: UTF-8
