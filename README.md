@@ -1,5 +1,9 @@
 # goseq
 
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/federicomarini/goseq/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/federicomarini/goseq/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
 The `goseq` package provides a method to detect Gene Ontology and/or other user 
 defined categories which are over/under represented in RNA-seq data.
 
