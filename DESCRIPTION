@@ -36,11 +36,15 @@ Imports:
     GenomicFeatures, 
     GenomeInfoDb
 Suggests: 
-    edgeR, 
+    knitr,
+    BiocStyle,
+    rmarkdown,
+    edgeR,
     org.Hs.eg.db
 License: LGPL (>= 2)
 URL: https://github.com/federicomarini/goseq
 BugReports: https://github.com/federicomarini/goseq/issues
+VignetteBuilder: knitr
 biocViews: 
     ImmunoOncology, Sequencing, GO, GeneExpression, Transcription, RNASeq,
     DifferentialExpression, Annotation, GeneSetEnrichment, KEGG, Pathways, 
