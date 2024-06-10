@@ -126,9 +126,9 @@ supportedOrganisms()
 
 The leftmost columns in the output of this command list the genomes and gene identifiers respectively. 
 If length data exists in the local database it is indicated in the second last column. 
-If your genome/ID combination is not in the local database, it may be downloaded from the UCSC genome browser or taken from a \texttt{TxDb} annotation package (if installed). 
+If your genome/ID combination is not in the local database, it may be downloaded from the UCSC genome browser or taken from a `TxDb` annotation package (if installed). 
 If your genome/ID combination is not found in any database, you will have to manually specify the gene lengths. 
-We encourage all users to manually specify their gene lengths if provided by upstream summarization programs. e.g. \texttt{featureCounts}, as these lengths will be more accurate.
+We encourage all users to manually specify their gene lengths if provided by upstream summarization programs. e.g. `featureCounts`, as these lengths will be more accurate.
 
 In order to link GO categories to genes, `r BiocStyle::Biocpkg("goseq")` uses the organism packages from Bioconductor.
 These packages are named `org.<Genome>.<ID>.db`, where `<Genome>` is a short string identifying the genome and `<ID>` is a short string identifying the gene identifier.  
@@ -289,7 +289,7 @@ The resulting object is ordered by GO category over representation amongst DE ge
 
 ### Using random sampling
 
-It may sometimes be desirable to use random sampling to generate the null distribution for category membership. For example, to check consistency against results from the Wallenius approximation. This is easily accomplished by using the \texttt{method} option to specify sampling and the \texttt{repcnt} option to specify the number of samples to generate:
+It may sometimes be desirable to use random sampling to generate the null distribution for category membership. For example, to check consistency against results from the Wallenius approximation. This is easily accomplished by using the `method` option to specify sampling and the `repcnt` option to specify the number of samples to generate:
 
 ```{r GO.samp, results='hide'}
 GO.samp <- goseq(pwf, "hg19", "ensGene", method = "Sampling", repcnt = 1000)
@@ -362,7 +362,7 @@ enriched.GO <-
 head(enriched.GO)
 ```
 
-Unless you are a machine, GO accession identifiers are probably not very meaningful to you.  Information about each term can be obtained from the Gene Ontology website, \url{http://www.geneontology.org/}, or using the R package `r BiocStyle::Biocpkg("GO.db")`.
+Unless you are a machine, GO accession identifiers are probably not very meaningful to you.  Information about each term can be obtained from the Gene Ontology website, http://www.geneontology.org/, or using the R package `r BiocStyle::Biocpkg("GO.db")`.
 
 ```{r GO_explained}
 library("GO.db")
