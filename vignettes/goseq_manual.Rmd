@@ -12,7 +12,6 @@ package: "`r BiocStyle::pkg_ver('goseq')`"
 vignette: |
   %\VignettePackage{goseq}
   %\VignetteIndexEntry{goseq User Manual}
-  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
   %\VignetteKeywords{GeneExpression, Transcription, RNASeq, FunctionalAnnotation,
   GO, Sequencing, DifferentialExpression, GeneSetEnrichment, KEGG, Pathways}
