@@ -41,7 +41,21 @@ This document gives an introduction to the use of the `r BiocStyle::Biocpkg("gos
 This package provides methods for performing Gene Ontology analysis of RNA-seq data, taking length bias into account [@Oshlack:2009p149].
 The methods and software used by `r BiocStyle::Biocpkg("goseq")` are equally applicable to other category based test of RNA-seq data, such as KEGG pathway analysis.
 
-TODO: installation instructions, as from generic bioc pkg
+To install `r BiocStyle::Biocpkg("goseq")`, you can run the following commands:
+
+```{r install, eval = FALSE}
+if (!require("BiocManager")) {
+  install.packages("BiocManager")
+}
+BiocManager::install("goseq")
+```
+
+If you want to install the development version from GitHub, you can alternatively
+run this command:
+
+```{r installgh, eval = FALSE}
+BiocManager::install("federicomarini/goseq")
+```
 
 TODO: name sections and crossreference through them
 
