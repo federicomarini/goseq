@@ -1,51 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>/404.html</loc>
-  </url>
-  <url>
-    <loc>/TODO.html</loc>
-  </url>
-  <url>
-    <loc>/authors.html</loc>
-  </url>
-  <url>
-    <loc>/index.html</loc>
-  </url>
-  <url>
-    <loc>/news/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/genes.html</loc>
-  </url>
-  <url>
-    <loc>/reference/getgo.html</loc>
-  </url>
-  <url>
-    <loc>/reference/getlength.html</loc>
-  </url>
-  <url>
-    <loc>/reference/goseq-pkg.html</loc>
-  </url>
-  <url>
-    <loc>/reference/goseq.html</loc>
-  </url>
-  <url>
-    <loc>/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/makespline.html</loc>
-  </url>
-  <url>
-    <loc>/reference/nullp.html</loc>
-  </url>
-  <url>
-    <loc>/reference/plotPWF.html</loc>
-  </url>
-  <url>
-    <loc>/reference/pp.html</loc>
-  </url>
-  <url>
-    <loc>/reference/supportedOrganisms.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>/404.html</loc></url>
+<url><loc>/authors.html</loc></url>
+<url><loc>/index.html</loc></url>
+<url><loc>/news/index.html</loc></url>
+<url><loc>/reference/genes.html</loc></url>
+<url><loc>/reference/getgo.html</loc></url>
+<url><loc>/reference/getlength.html</loc></url>
+<url><loc>/reference/goseq-pkg.html</loc></url>
+<url><loc>/reference/goseq.html</loc></url>
+<url><loc>/reference/index.html</loc></url>
+<url><loc>/reference/makespline.html</loc></url>
+<url><loc>/reference/nullp.html</loc></url>
+<url><loc>/reference/plotPWF.html</loc></url>
+<url><loc>/reference/pp.html</loc></url>
+<url><loc>/reference/supportedOrganisms.html</loc></url>
 </urlset>
+
