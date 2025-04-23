@@ -6,3 +6,4 @@
   - applying styler for consistent spacing
   - using Github Actions for CI/CD
   - refined import statements
+* Re-worked on the vignette, transported from older Rnw format into Rmd
