@@ -8,34 +8,50 @@ export(nullp)
 export(plotPWF)
 export(supportedOrganisms)
 import(geneLenDataBase)
-importFrom(AnnotationDbi,as.list)
-importFrom(AnnotationDbi,select)
-importFrom(BiasedUrn,dWNCHypergeo)
-importFrom(BiasedUrn,pWNCHypergeo)
-importFrom(BiocGenerics,relist)
-importFrom(BiocGenerics,toTable)
+importFrom(AnnotationDbi,
+  as.list,
+  select
+)
+importFrom(BiasedUrn,
+  dWNCHypergeo,
+  pWNCHypergeo
+)
+importFrom(BiocGenerics,
+  relist,
+  toTable
+)
 importFrom(GO.db,GO.db)
 importFrom(GenomicFeatures,transcriptLengths)
-importFrom(Seqinfo,`genome<-`)
-importFrom(graphics,lines)
-importFrom(graphics,plot)
+importFrom(Seqinfo,"genome<-")
+importFrom(graphics,
+  lines,
+  plot
+)
 importFrom(methods,show)
-importFrom(mgcv,Predict.matrix)
-importFrom(mgcv,gam)
-importFrom(mgcv,mono.con)
-importFrom(mgcv,pcls)
-importFrom(mgcv,s)
-importFrom(mgcv,smoothCon)
-importFrom(rtracklayer,browserSession)
-importFrom(rtracklayer,getTable)
-importFrom(rtracklayer,ucscGenomes)
-importFrom(rtracklayer,ucscTableQuery)
-importFrom(stats,approx)
-importFrom(stats,binomial)
-importFrom(stats,dhyper)
-importFrom(stats,median)
-importFrom(stats,phyper)
-importFrom(stats,runif)
-importFrom(utils,data)
-importFrom(utils,installed.packages)
-importFrom(utils,tail)
+importFrom(mgcv,
+  Predict.matrix,
+  gam,
+  mono.con,
+  pcls,
+  s,
+  smoothCon
+)
+importFrom(rtracklayer,
+  browserSession,
+  getTable,
+  ucscGenomes,
+  ucscTableQuery
+)
+importFrom(stats,
+  approx,
+  binomial,
+  dhyper,
+  median,
+  phyper,
+  runif
+)
+importFrom(utils,
+  data,
+  installed.packages,
+  tail
+)

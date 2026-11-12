@@ -11,10 +11,10 @@ nullp(DEgenes, genome, id, bias.data = NULL, plot.fit = TRUE)
 names are gene IDs.}
 
 \item{genome}{A string identifying the genome that \code{genes} refer to.
-For a list of supported organisms run \code{\link{supportedGenomes}}.}
+For a list of supported organisms run \code{\link[geneLenDataBase:supportedGenomes]{supportedGenomes}}.}
 
 \item{id}{A string identifying the gene identifier used by \code{genes}.
-For a list of supported gene IDs run \code{\link{supportedGeneIDs}}.}
+For a list of supported gene IDs run \code{\link[geneLenDataBase:supportedGeneIDs]{supportedGeneIDs}}.}
 
 \item{bias.data}{A numeric vector containing the data on which the DE may
 depend.  Usually this is the median transcript length of each gene in bp.
@@ -69,7 +69,7 @@ Young, M. D., Wakefield, M. J., Smyth, G. K., Oshlack, A. (2010)
 Genome Biology Date: Feb 2010 Vol: 11 Issue: 2 Pages: R14
 }
 \seealso{
-\code{\link{supportedGenomes}}, \code{\link{supportedGeneIDs}},
+\code{\link[geneLenDataBase:supportedGenomes]{supportedGenomes}}, \code{\link[geneLenDataBase:supportedGeneIDs]{supportedGeneIDs}},
 \code{\link{goseq}}, \code{\link{getlength}}
 }
 \author{

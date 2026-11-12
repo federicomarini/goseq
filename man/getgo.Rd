@@ -10,10 +10,10 @@ getgo(genes, genome, id, fetch.cats = c("GO:CC", "GO:BP", "GO:MF"))
 \item{genes}{A vector or list of genes to get the associated GO categories.}
 
 \item{genome}{A string identifying the genome that \code{genes} refer to.
-For a list of supported organisms run \code{\link{supportedGenomes}}.}
+For a list of supported organisms run \code{\link[geneLenDataBase:supportedGenomes]{supportedGenomes}}.}
 
 \item{id}{A string identifying the gene identifier used by \code{genes}.
-For a list of supported gene IDs run \code{\link{supportedGeneIDs}}.}
+For a list of supported gene IDs run \code{\link[geneLenDataBase:supportedGeneIDs]{supportedGeneIDs}}.}
 
 \item{fetch.cats}{A vector specifying which categories to fetch the mapping
 between category names and genes for.  See details for valid options.}
@@ -59,7 +59,7 @@ getgo(genes,'hg19','ensGene')
 
 }
 \seealso{
-\code{\link{supportedGenomes}}, \code{\link{supportedGeneIDs}},
+\code{\link[geneLenDataBase:supportedGenomes]{supportedGenomes}}, \code{\link[geneLenDataBase:supportedGeneIDs]{supportedGeneIDs}},
 \code{\link{goseq}}
 }
 \author{

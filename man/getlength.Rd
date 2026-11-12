@@ -11,10 +11,10 @@ getlength(genes, genome, id)
 required.}
 
 \item{genome}{A string identifying the genome that \code{genes} refer to.
-For a list of supported organisms run \code{\link{supportedGenomes}}.}
+For a list of supported organisms run \code{\link[geneLenDataBase:supportedGenomes]{supportedGenomes}}.}
 
 \item{id}{A string identifying the gene identifier used by \code{genes}.
-For a list of supported gene IDs run \code{\link{supportedGeneIDs}}.}
+For a list of supported gene IDs run \code{\link[geneLenDataBase:supportedGeneIDs]{supportedGeneIDs}}.}
 }
 \value{
 Returns a vector of the gene lengths, in the same order as
@@ -53,7 +53,7 @@ getlength(genes,'hg19','ensGene')
 
 }
 \seealso{
-\code{\link{supportedGenomes}}, \code{\link{supportedGeneIDs}},
+\code{\link[geneLenDataBase:supportedGenomes]{supportedGenomes}}, \code{\link[geneLenDataBase:supportedGeneIDs]{supportedGeneIDs}},
 \code{\link{nullp}}, \pkg{geneLenDataBase}
 }
 \author{
