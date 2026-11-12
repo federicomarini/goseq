@@ -10,7 +10,7 @@
 #' @importFrom AnnotationDbi as.list select
 #' @importFrom GO.db GO.db
 #' @importFrom GenomicFeatures transcriptLengths
-#' @importFrom GenomeInfoDb `genome<-`
+#' @importFrom Seqinfo `genome<-`
 #' @importFrom methods show
 #' @importFrom rtracklayer browserSession ucscGenomes ucscTableQuery getTable
 #' @importFrom BiocGenerics relist toTable
