@@ -25,9 +25,9 @@
 #' 
 #' @param genes A vector or list of genes to get the associated GO categories.
 #' @param genome A string identifying the genome that \code{genes} refer to.
-#' For a list of supported organisms run \code{\link{supportedGenomes}}.
+#' For a list of supported organisms run \code{\link[geneLenDataBase:supportedGenomes]{supportedGenomes}}.
 #' @param id A string identifying the gene identifier used by \code{genes}.
-#' For a list of supported gene IDs run \code{\link{supportedGeneIDs}}.
+#' For a list of supported gene IDs run \code{\link[geneLenDataBase:supportedGeneIDs]{supportedGeneIDs}}.
 #' @param fetch.cats A vector specifying which categories to fetch the mapping
 #' between category names and genes for.  See details for valid options.
 #' @return A list where each entry is named by a gene and contains a vector of
@@ -36,7 +36,7 @@
 #' 
 #' @author Matthew D. Young \email{myoung@@wehi.edu.au}
 #' 
-#' @seealso \code{\link{supportedGenomes}}, \code{\link{supportedGeneIDs}},
+#' @seealso \code{\link[geneLenDataBase:supportedGenomes]{supportedGenomes}}, \code{\link[geneLenDataBase:supportedGeneIDs]{supportedGeneIDs}},
 #' \code{\link{goseq}}
 #' 
 #' @export

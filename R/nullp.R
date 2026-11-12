@@ -25,9 +25,9 @@
 #' @param DEgenes A named binary vector where 1 represents DE, 0 not DE and the
 #' names are gene IDs.
 #' @param genome A string identifying the genome that \code{genes} refer to.
-#' For a list of supported organisms run \code{\link{supportedGenomes}}.
+#' For a list of supported organisms run \code{\link[geneLenDataBase:supportedGenomes]{supportedGenomes}}.
 #' @param id A string identifying the gene identifier used by \code{genes}.
-#' For a list of supported gene IDs run \code{\link{supportedGeneIDs}}.
+#' For a list of supported gene IDs run \code{\link[geneLenDataBase:supportedGeneIDs]{supportedGeneIDs}}.
 #' @param bias.data A numeric vector containing the data on which the DE may
 #' depend.  Usually this is the median transcript length of each gene in bp.
 #' If set to \code{NULL} \code{nullp} will attempt to fetch length using
@@ -45,7 +45,7 @@
 #' 
 #' @author Matthew D. Young \email{myoung@@wehi.edu.au}
 #' 
-#' @seealso \code{\link{supportedGenomes}}, \code{\link{supportedGeneIDs}},
+#' @seealso \code{\link[geneLenDataBase:supportedGenomes]{supportedGenomes}}, \code{\link[geneLenDataBase:supportedGeneIDs]{supportedGeneIDs}},
 #' \code{\link{goseq}}, \code{\link{getlength}}
 #' 
 #' @export

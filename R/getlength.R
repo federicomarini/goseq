@@ -21,9 +21,9 @@
 #' @param genes A vector or list of the genes for which length information is
 #' required.
 #' @param genome A string identifying the genome that \code{genes} refer to.
-#' For a list of supported organisms run \code{\link{supportedGenomes}}.
+#' For a list of supported organisms run \code{\link[geneLenDataBase:supportedGenomes]{supportedGenomes}}.
 #' @param id A string identifying the gene identifier used by \code{genes}.
-#' For a list of supported gene IDs run \code{\link{supportedGeneIDs}}.
+#' For a list of supported gene IDs run \code{\link[geneLenDataBase:supportedGeneIDs]{supportedGeneIDs}}.
 #' @return Returns a vector of the gene lengths, in the same order as
 #' \code{genes}.  If length data is unavailable for a particular gene NA is
 #' returned in that position.  The returned vector is intended for use with the
@@ -31,7 +31,7 @@
 #' 
 #' @author Matthew D. Young \email{myoung@@wehi.edu.au}
 #' 
-#' @seealso \code{\link{supportedGenomes}}, \code{\link{supportedGeneIDs}},
+#' @seealso \code{\link[geneLenDataBase:supportedGenomes]{supportedGenomes}}, \code{\link[geneLenDataBase:supportedGeneIDs]{supportedGeneIDs}},
 #' \code{\link{nullp}}, \pkg{geneLenDataBase}
 #' 
 #' @export
