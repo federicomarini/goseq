@@ -1,6 +1,6 @@
 Package: goseq
 Title: Gene Ontology analyser for RNA-seq and other length biased data
-Version: 1.65.1
+Version: 1.65.2
 Date: 2026-11-12
 Authors@R: 
     c(
