@@ -27,7 +27,10 @@ importFrom(graphics,
   lines,
   plot
 )
-importFrom(methods,show)
+importFrom(methods,
+  is,
+  show
+)
 importFrom(mgcv,
   Predict.matrix,
   gam,

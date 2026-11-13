@@ -114,6 +114,8 @@
 #' 
 #' @export
 #' 
+#' @importFrom methods is
+#' 
 #' @references Young, M. D., Wakefield, M. J., Smyth, G. K., Oshlack, A. (2010)
 #' \emph{Gene ontology analysis for RNA-seq: accounting for selection bias}
 #' Genome Biology Date: Feb 2010 Vol: 11 Issue: 2 Pages: R14
@@ -163,7 +165,7 @@ goseq <- function(pwf, genome, id, gene2cat = NULL, test.cats = c("GO:CC", "GO:B
     # The gene2cat input accepts a number of formats, we need to check each of them in term
     message("Using manually entered categories.")
     # The options are a flat mapping (that is a data frame or matrix) or a list, where the list can be either gene->categories or category->genes
-    if (class(gene2cat) != "list") {
+    if (!is(gene2cat, "list")) {
       # it's not a list so it must be a data.frame, work out which column contains the genes
       genecol_sum <- as.numeric(apply(gene2cat, 2, function(u) {
         sum(u %in% rownames(pwf))
