@@ -58,11 +58,19 @@ getlength <- function(genes, genome, id) {
   if (paste(genome, id, "LENGTH", sep = ".") %in% repo) {
     # Yes it is, so load it and group transcript lengths into genes
     message("Loading ", genome, " length data...")
-    data(list = paste(genome, id, "LENGTH", sep = "."), package = "geneLenDataBase")
-    data <- split(get(paste(genome, id, "LENGTH", sep = "."))$Length, get(paste(genome, id, "LENGTH", sep = "."))$Gene)
+    
+    dataset <- paste(genome, id, "LENGTH", sep = ".")
+    env <- new.env()
+    data(list = dataset, package = "geneLenDataBase", envir = env)
+    length_data <- get(dataset, envir = env)
+    data <- split(length_data$Length, length_data$Gene)
+    
+    # data(list = paste(genome, id, "LENGTH", sep = "."), package = "geneLenDataBase")
+    # data <- split(get(paste(genome, id, "LENGTH", sep = "."))$Length, get(paste(genome, id, "LENGTH", sep = "."))$Gene)
 
     # Get the names of the genes used in the genome package
-    gene_names <- get(paste(genome, id, "LENGTH", sep = "."))$Gene
+    # gene_names <- get(paste(genome, id, "LENGTH", sep = "."))$Gene
+    gene_names <- length_data$Gene
   } else { ### Try to find the gene lengths from TXDB annotation packages
     message("Can't find ", genome, "/", id, " length data in genLenDataBase...")
 
